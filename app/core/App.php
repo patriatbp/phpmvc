@@ -31,7 +31,7 @@ class App{
 
 		 //params
 		 if (!empty($url)) {
-		 	$this->parrams = array_values($url);
+		 	$this->params = array_values($url);
 		 }
 
 
