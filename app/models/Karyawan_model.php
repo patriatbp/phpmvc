@@ -35,4 +35,37 @@ class Karyawan_model {
 
 		return  $this->db->rowCount();
 	}
+
+	public function hapusDataKaryawan($id)
+	{
+		$query = "DELETE FROM karyawan WHERE id = :id";
+		$this->db->query($query);
+		$this->db->bind('id', $id);
+
+		$this->db->execute();
+
+		return $this->db->rowCount();
+	}
+
+	public function ubahDataKaryawan($data)
+	{
+		$query = "UPDATE karyawan
+					SET
+					nama = :nama,
+					nk = :nk,
+					email = :email,
+					stat = :stat
+					WHERE id = :id";
+
+		$this->db->query($query);
+		$this->db->bind('nama', $data['nama']);
+		$this->db->bind('nk', $data['nk']);
+		$this->db->bind('email', $data['email']);
+		$this->db->bind('stat', $data['status']);
+		$this->db->bind('id', $data['id']);
+
+		$this->db->execute();
+
+		return  $this->db->rowCount();
+	}
 }
